@@ -1,0 +1,211 @@
+/* Color Palette Variables */
+:root {
+  --ink: #1d2430;
+  --paper: #fdfaf5;
+  --panel: #f3ede4;
+  --tea: #7a3e12;
+  --accent: #b23a0e;
+  --muted: #5c6773;
+  --line: #d6dce3;
+  --focus: #1c8a9c;
+  --plain: #c9dac9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.2;
+  color: var(--tea);
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+p, li { max-width: 65ch; }
+a { color: var(--accent); }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  background: var(--accent);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.skip-link:focus { top: 1rem; }
+
+.logo {
+  font-weight: 700;
+  color: var(--plain);
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+}
+
+p { color: var(--muted); }
+
+.tagline {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.wrapper, main {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+main > section { padding: 2rem 0; }
+
+.site-header {
+  background: var(--ink);
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  background: var(--ink);
+  color: var(--plain);
+  padding: 1.5rem 0;
+}
+
+.site-footer p { color: inherit; }
+.site-footer a { color: #fff; }
+
+/* ---------- Slider component ---------- */
+.slider-component {
+  width: 100%;              /* fills whatever parent it is placed in */
+  position: relative;
+  padding: 1rem;
+  background: var(--panel);
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Viewing window: the overflow mask */
+.slider-window {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: #000;
+}
+
+/* Flex-aligned track that slides along the X axis */
+.slider-track {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;   /* hint for GPU-accelerated compositing */
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  max-width: none;          /* override the global li 65ch limit */
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fills the frame without distortion */
+}
+
+/* Arrows on the left / right boundaries of the window */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0 0 0.2rem;
+  font: inherit;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(29, 36, 48, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-prev { left: 0.75rem; }
+.slider-next { right: 0.75rem; }
+
+.slider-btn:hover {
+  background: var(--accent);
+  border-color: #fff;
+}
+
+/* Indicator dots */
+.slider-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.slider-dots button {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.slider-dots button[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Responsive breakpoints ---------- */
+@media (max-width: 600px) {
+  h1 { font-size: 1.75rem; }
+  .slider-component { padding: 0.5rem; }
+  .slider-window { aspect-ratio: 4 / 3; }
+  .slider-prev { left: 0.4rem; }
+  .slider-next { right: 0.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-track { transition: none; }
+}

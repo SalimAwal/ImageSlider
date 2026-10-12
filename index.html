@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Himalayan Showcase - Modular Image Slider</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="slider.js" defer></script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="wrapper">
+        <p class="logo">Himalayan Views</p>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="slider-section" aria-labelledby="slider-title">
+        <h1 id="slider-title">Scenic Gallery</h1>
+        <p class="tagline">A modular vanilla JavaScript image slider component.</p>
+
+        <!-- Any element with class "slider-component" becomes a slider -->
+        <div
+          class="slider-component"
+          id="imageSlider"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Scenic Himalayan images"
+        >
+          <div class="slider-window">
+            <ul class="slider-track">
+              <li class="slide">
+                <img
+                  src="images/annapurna-range.jpg"
+                  alt="Annapurna Himalayan range under clear blue skies"
+                  width="1200"
+                  height="675"
+                />
+              </li>
+              <li class="slide">
+                <img
+                  src="images/phewa-lake-pokhara.jpg"
+                  alt="Phewa Tal lake reflecting surrounding green hills in Pokhara"
+                  width="1200"
+                  height="675"
+                />
+              </li>
+              <li class="slide">
+                <img
+                  src="images/mustang-valley.jpg"
+                  alt="Arid landscape and cultural heritage of Mustang Valley"
+                  width="1200"
+                  height="675"
+                />
+              </li>
+            </ul>
+
+            <!-- Arrows sit on the left and right edges of the viewing window -->
+            <button class="slider-btn slider-prev" type="button" aria-label="Previous slide">&lsaquo;</button>
+            <button class="slider-btn slider-next" type="button" aria-label="Next slide">&rsaquo;</button>
+          </div>
+
+          <div class="slider-dots" role="group" aria-label="Slide navigation"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p>&copy; <span class="year">2026</span> Frontend Engineering Project.</p>
+      </div>
+    </footer>
+  </body>
+</html>
